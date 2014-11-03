@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>图片裁剪</title>
+		<style type="text/css">
+			body{
+				background: #333;
+			}
+			#box{
+				position: absolute;
+				top: 100px;
+				left: 200px;
+				width: 300px;
+				height: 400px;
+			}
+			#img1{
+				opacity: 0.5;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				/*
+				z-index: 5;
+				*/
+			}
+			#img2{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				clip: rect(0px,200px,200px,0px);
+				/*
+				z-index: 2;
+				*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id='box'>
+			<img id='img1' src='/Users/chengnaixue/aa.png'/>
+			<img id='img2' src='/Users/chengnaixue/aa.png'/>
+		</div>
+		
+	</body>
+
+</html>
