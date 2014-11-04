@@ -32,12 +32,69 @@
 				z-index: 2;
 				*/
 			}
+			#main{
+				border: 1px solid #fff;
+				width: 200px;
+				height: 200px;
+				position: absolute;
+			}
+			.minDiv{
+				position: absolute;
+				width: 8px;
+				height: 8px;
+				background: #fff;
+			}
+			.left-up{
+				left: -4px;
+				top: -4px;
+			}
+			.up{
+				left: 50%;
+				margin-left: -4px;
+				top: -4px;
+			}
+			.right-up{
+				right: -4px;
+				top: -4px;
+			}
+			.right{
+				top: 50%;
+				margin-top: -4px;
+				right: -4px;
+			}
+			.right-down{
+				right: -4px;
+				bottom: -4px;
+			}
+			.down{
+				bottom: -4px;
+				left: 50%;
+				margin-left: -4px;
+			}
+			.left-down{
+				left: -4px;
+				bottom: -4px;
+			}
+			.left{
+				left: -4px;
+				top: 50%;
+				margin-top: -4px;
+			}
 		</style>
 	</head>
 	<body>
 		<div id='box'>
 			<img id='img1' src='/Users/chengnaixue/aa.png'/>
 			<img id='img2' src='/Users/chengnaixue/aa.png'/>
+			<div id='main'>
+				<div class='minDiv left-up'></div>
+				<div class='minDiv up'></div>
+				<div class='minDiv right-up'></div>
+				<div class='minDiv right'></div>
+				<div class='minDiv right-down'></div>
+				<div class='minDiv down'></div>
+				<div class='minDiv left-down'></div>
+				<div class='minDiv left'></div>
 		</div>
 		
 	</body>
