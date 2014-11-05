@@ -96,32 +96,49 @@
 			<img id='img2' src='/Users/chengnaixue/aa.png'/>
 			<div id='main'>
 				<div class='minDiv left-up'></div>
-				<div class='minDiv up'></div>
+				<div id='up' class='minDiv up'></div>
 				<div class='minDiv right-up'></div>
 				<div id='right' class='minDiv right'></div>
 				<div class='minDiv right-down'></div>
-				<div class='minDiv down'></div>
+				<div id='down' class='minDiv down'></div>
 				<div class='minDiv left-down'></div>
 				<div class='minDiv left'></div>
 		</div>
 	<script type="text/javascript">
 		var rightDiv = document.getElementById('right');
+		var downDiv = document.getElementById('down');
 		var mainDiv = document.getElementById('main');
 		var ifKeyDown = false;
+		var contact = "";
 
 		window.onmousemove = function(e){
+			e = e || window.event;
 			if(ifKeyDown){
-				e = e || window.event;
-				var x = e.clientX;
-				var widthBefore = mainDiv.offsetWidth - 2;
-				var addWith = x - getPosition(mainDiv).left - widthBefore;
+				if(contact == 'right'){					
+					var x = e.clientX;
+					var widthBefore = mainDiv.offsetWidth - 2;
+					var addWith = x - getPosition(mainDiv).left - widthBefore;
+					
+					mainDiv.style.width = addWith + widthBefore + "px";		
+				}else if(contact == 'down'){
+					var y = e.clientY;
+					var heightBefore = mainDiv.offsetHeight -2;
+					var addHeight = y - getPosition(mainDiv).top - heightBefore;
+
+					mainDiv.style.height = addHeight + heightBefore + "px";
+				}
 				
-				mainDiv.style.width = addWith + widthBefore + "px";
 			}
 		};
 
 		rightDiv.onmousedown = function(e){
 			ifKeyDown = true;
+			contact = "right";
+		};
+
+		downDiv.onmousedown = function(e){
+			ifKeyDown = true;
+			contact = "down";
 		};
 
 		window.onmouseup = function(e){
