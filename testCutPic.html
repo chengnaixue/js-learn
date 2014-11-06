@@ -95,13 +95,13 @@
 			<img id='img1' src='/Users/chengnaixue/aa.png'/>
 			<img id='img2' src='/Users/chengnaixue/aa.png'/>
 			<div id='main'>
-				<div class='minDiv left-up'></div>
+				<div id='left-up' class='minDiv left-up'></div>
 				<div id='up' class='minDiv up'></div>
-				<div class='minDiv right-up'></div>
+				<div id='right-up' class='minDiv right-up'></div>
 				<div id='right' class='minDiv right'></div>
-				<div class='minDiv right-down'></div>
+				<div id='right-down' class='minDiv right-down'></div>
 				<div id='down' class='minDiv down'></div>
-				<div class='minDiv left-down'></div>
+				<div id='left-down' class='minDiv left-down'></div>
 				<div id='left' class='minDiv left'></div>
 			</div>
 		</div>
@@ -111,42 +111,47 @@
 		var upDiv = document.getElementById('up');
 		var mainDiv = document.getElementById('main');
 		var leftDiv = document.getElementById('left');
+		var leftUpDiv = document.getElementById('left-up');
+		var rightUpDiv = document.getElementById('right-up');
+		var leftDownDiv = document.getElementById('left-down');
+		var rightDownDiv = document.getElementById('right-down');
 		var ifKeyDown = false;
 		var contact = "";
 
 		window.onmousemove = function(e){
 			e = e || window.event;
 			if(ifKeyDown){
-				if(contact == 'right'){					
-					var x = e.clientX;
-					var widthBefore = mainDiv.offsetWidth - 2;
-					var addWith = x - getPosition(mainDiv).left - widthBefore;
-					
-					mainDiv.style.width = addWith + widthBefore + "px";		
-				}else if(contact == 'down'){
-					var y = e.clientY;
-					var heightBefore = mainDiv.offsetHeight -2;
-					var addHeight = y - getPosition(mainDiv).top - heightBefore;
+				switch(contact){
+					case 'right':
+						rightMove(e);
+						break;
+					case 'down':
+						downMove(e);
+						break;
+					case 'up':
+						upMove(e);
+						break;
+					case 'left':
+						leftMove(e);
+						break;
+					case 'left-up':
+						leftMove(e);
+						upMove(e);
+						break;
+					case 'right-up':
+						rightMove(e);
+						upMove(e);
+						break;
+					case 'left-down':
+						leftMove(e);
+						downMove(e);
+						break;
+					case 'right-down':
+						rightMove(e);
+						downMove(e);
+						break;
 
-					mainDiv.style.height = addHeight + heightBefore + "px";
-				}else if(contact == 'up'){
-					var y = e.clientY;
-					var mainY = getPosition(mainDiv).top;
-					var addHeight = mainY - y;
-					var heightBefore = mainDiv.offsetHeight - 2;
-
-					mainDiv.style.top = mainDiv.offsetTop - addHeight + "px";
-					mainDiv.style.height = heightBefore + addHeight + "px";
-				}else if(contact == 'left'){
-					var x = e.clientX;
-					var mainX = getPosition(mainDiv).left;
-					var widthBefore = mainDiv.offsetWidth - 2;
-					var addWith = mainX -x;
-
-					mainDiv.style.width = widthBefore + addWith + "px";
-					mainDiv.style.left = mainDiv.offsetLeft - addWith + "px";
-				}
-				
+				}				
 			}
 		};
 
@@ -170,6 +175,26 @@
 			contact = "left";
 		};
 
+		leftUpDiv.onmousedown = function(e){
+			ifKeyDown = true;
+			contact = "left-up";
+		};
+
+		rightDownDiv.onmousedown = function(e){
+			ifKeyDown = true;
+			contact = "right-down";
+		};
+
+		rightUpDiv.onmousedown = function(e){
+			ifKeyDown = true;
+			contact = "right-up";
+		};
+
+		leftDownDiv.onmousedown = function(e){
+			ifKeyDown = true;
+			contact = "left-down";
+		};
+
 		window.onmouseup = function(e){
 			ifKeyDown = false;
 		};
@@ -185,6 +210,44 @@
 				parent = parent.offsetParent;
 			}
 			return {"left":left,"top":top};
+		}
+
+		function rightMove(e){
+			var x = e.clientX;
+			var widthBefore = mainDiv.offsetWidth - 2;
+			var addWith = x - getPosition(mainDiv).left - widthBefore;				
+			mainDiv.style.width = addWith + widthBefore + "px";	
+		}
+
+		function downMove(e){
+			var y = e.clientY;
+			var heightBefore = mainDiv.offsetHeight -2;
+			var addHeight = y - getPosition(mainDiv).top - heightBefore;
+
+			mainDiv.style.height = addHeight + heightBefore + "px";
+
+		}
+
+		function upMove(e) {
+			var y = e.clientY;
+			var mainY = getPosition(mainDiv).top;
+			var addHeight = mainY - y;				
+			var heightBefore = mainDiv.offsetHeight - 2;
+
+			mainDiv.style.top = mainDiv.offsetTop - addHeight + "px";
+			mainDiv.style.height = heightBefore + addHeight + "px";
+
+		}
+
+		function leftMove(e){
+			var x = e.clientX;
+			var mainX = getPosition(mainDiv).left;				
+			var widthBefore = mainDiv.offsetWidth - 2;
+			var addWith = mainX -x;
+
+			mainDiv.style.width = widthBefore + addWith + "px";
+			mainDiv.style.left = mainDiv.offsetLeft - addWith + "px";
+
 		}
 
 	</script>
