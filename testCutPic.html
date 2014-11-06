@@ -102,13 +102,15 @@
 				<div class='minDiv right-down'></div>
 				<div id='down' class='minDiv down'></div>
 				<div class='minDiv left-down'></div>
-				<div class='minDiv left'></div>
+				<div id='left' class='minDiv left'></div>
 			</div>
 		</div>
 	<script type="text/javascript">
 		var rightDiv = document.getElementById('right');
 		var downDiv = document.getElementById('down');
+		var upDiv = document.getElementById('up');
 		var mainDiv = document.getElementById('main');
+		var leftDiv = document.getElementById('left');
 		var ifKeyDown = false;
 		var contact = "";
 
@@ -127,6 +129,22 @@
 					var addHeight = y - getPosition(mainDiv).top - heightBefore;
 
 					mainDiv.style.height = addHeight + heightBefore + "px";
+				}else if(contact == 'up'){
+					var y = e.clientY;
+					var mainY = getPosition(mainDiv).top;
+					var addHeight = mainY - y;
+					var heightBefore = mainDiv.offsetHeight - 2;
+
+					mainDiv.style.top = mainDiv.offsetTop - addHeight + "px";
+					mainDiv.style.height = heightBefore + addHeight + "px";
+				}else if(contact == 'left'){
+					var x = e.clientX;
+					var mainX = getPosition(mainDiv).left;
+					var widthBefore = mainDiv.offsetWidth - 2;
+					var addWith = mainX -x;
+
+					mainDiv.style.width = widthBefore + addWith + "px";
+					mainDiv.style.left = mainDiv.offsetLeft - addWith + "px";
 				}
 				
 			}
@@ -140,6 +158,16 @@
 		downDiv.onmousedown = function(e){
 			ifKeyDown = true;
 			contact = "down";
+		};
+
+		upDiv.onmousedown = function(e){
+			ifKeyDown = true;
+			contact = "up";
+		};
+
+		leftDiv.onmousedown = function(e){
+			ifKeyDown = true;
+			contact = "left";
 		};
 
 		window.onmouseup = function(e){
