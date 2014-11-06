@@ -106,6 +106,7 @@
 			</div>
 		</div>
 	<script type="text/javascript">
+		document.onselectstart = new Function('event.returnValue=false;');
 		var rightDiv = document.getElementById('right');
 		var downDiv = document.getElementById('down');
 		var upDiv = document.getElementById('up');
@@ -153,6 +154,8 @@
 
 				}				
 			}
+
+			setChoice();
 		};
 
 		rightDiv.onmousedown = function(e){
@@ -248,6 +251,19 @@
 			mainDiv.style.width = widthBefore + addWith + "px";
 			mainDiv.style.left = mainDiv.offsetLeft - addWith + "px";
 
+		}
+
+		function setChoice(){
+			//alert(1);
+			var top = mainDiv.offsetTop;
+			var right = mainDiv.offsetLeft + mainDiv.offsetWidth;
+			var left = mainDiv.offsetLeft;
+			var bottom = mainDiv.offsetTop + mainDiv.offsetHeight;
+			var img2 = document.getElementById('img2');
+			//alert({top,right,left,bottom});
+			//alert("rect("+top+" px,"+right+" px,"+bottom+" px,"+left+" px"+")");
+			img2.style.clip = "rect("+top+"px,"+right+"px,"+bottom+"px,"+left+"px"+")";
+			//img2.style.clip = "rect(10px,200px,200px,0px)";
 		}
 
 	</script>
