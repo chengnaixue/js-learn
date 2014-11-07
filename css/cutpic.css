@@ -1,0 +1,94 @@
+body{
+	background: #333;
+}
+#box{
+	position: absolute;
+	top: 100px;
+	left: 200px;
+	width: 300px;
+	height: 400px;
+}
+#preview{
+	position: absolute;
+	width: 300px;
+	height: 400px;
+	top: 100px;
+	left: 520px;
+}
+#preview #img3{
+	position: absolute;
+}
+#img1{
+	opacity: 0.5;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	/*
+	z-index: 5;
+	*/
+}
+#img2{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	clip: rect(0px,200px,200px,0px);
+	/*
+	z-index: 2;
+	*/
+}
+#main{
+	border: 1px solid #fff;
+	width: 200px;
+	height: 200px;
+	position: absolute;
+}
+.minDiv{
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background: #fff;
+}
+.left-up{
+	left: -4px;
+	top: -4px;
+	cursor: nw-resize;
+}
+.up{
+	left: 50%;
+	margin-left: -4px;
+	top: -4px;
+	cursor: n-resize;
+}
+.right-up{
+	right: -4px;
+	top: -4px;
+	cursor: ne-resize;
+}
+.right{
+	top: 50%;
+	margin-top: -4px;
+	right: -4px;
+	cursor: e-resize;
+}
+.right-down{
+	right: -4px;
+	bottom: -4px;
+	cursor: se-resize;
+}
+.down{
+	bottom: -4px;
+	left: 50%;
+	margin-left: -4px;
+	cursor: s-resize;
+}
+.left-down{
+	left: -4px;
+	bottom: -4px;
+	cursor: sw-resize;
+}
+.left{
+	left: -4px;
+	top: 50%;
+	margin-top: -4px;
+	cursor: w-resize;
+}
