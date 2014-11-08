@@ -36,14 +36,15 @@
 		var minDiv = document.getElementById('minDiv');
 		var lineDiv = document.getElementById('lineDiv');
 		var keyDown = false;
+		var xTemp = 0; //鼠标点击时相对于minDiv的左边距
 		window.onmousemove = function(e){
 			e.stopPropagation();
 			if(keyDown){
 				var x = e.clientX;//鼠标横坐标var x
 				var lineDiv_left = getPosition(lineDiv).left;//长线条的横坐标
-				var minDiv_left = (x - lineDiv_left) - 7.5;//小方块相对于父元素（长线条）的left值vaminDiv_left
-				if(minDiv_left > lineDiv.offsetWidth - 7.5){
-					minDiv_left = lineDiv.offsetWidth - 7.5;
+				var minDiv_left = (x - lineDiv_left) - xTemp;//小方块相对于父元素（长线条）的left值vaminDiv_left
+				if(minDiv_left > (lineDiv.offsetWidth - minDiv.offsetWidth)){
+					minDiv_left = lineDiv.offsetWidth - minDiv.offsetWidth;
 				}
 				if(minDiv_left < 0){
 					minDiv_left = 0;
@@ -55,6 +56,7 @@
 		minDiv.onmousedown = function(e){
 			e.stopPropagation();
 			keyDown = true;
+			xTemp = e.clientX - getPosition(minDiv).left;
 		};
 		minDiv.onmouseup = function(){
 			keyDown = false;
