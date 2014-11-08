@@ -1,0 +1,21 @@
+.lineDiv{
+	position:absolute;
+	height:5px;
+	font-size:0;
+	line-height:0;
+	background:#999;
+	width:500px;
+	top:100px;
+	left:50%;
+	margin-left:-250px;
+}
+
+.lineDiv .minDiv{
+	position:absolute;
+	top:-5px;
+	left:0;
+	width:15px;
+	height:15px;
+	background:#000;
+	cursor:pointer;
+}

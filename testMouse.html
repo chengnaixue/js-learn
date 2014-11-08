@@ -3,81 +3,14 @@
     <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>鼠标拖动小方块</title>
-		<style type="text/css">
-			.lineDiv{
-				position:absolute;
-				height:5px;
-				font-size:0;
-				line-height:0;
-				background:#999;
-				width:500px;
-				top:100px;
-				left:50%;
-				margin-left:-250px;
-			}
-			.lineDiv .minDiv{
-				position:absolute;
-				top:-5px;
-				left:0;
-				width:15px;
-				height:15px;
-				background:#000;
-				cursor:pointer;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="css/mousemove.css">
 	</head>
 	<body>
 		<center><h3>用鼠标拖动小方块</h3></center>
 		<div id="lineDiv" class="lineDiv">
 			<div id="minDiv" class="minDiv"></div>
 		</div>
-	<script type="text/javascript">
-		document.onselectstart = new Function('event.returnValue=false;');
-		var minDiv = document.getElementById('minDiv');
-		var lineDiv = document.getElementById('lineDiv');
-		var keyDown = false;
-		var xTemp = 0; //鼠标点击时相对于minDiv的左边距
-		window.onmousemove = function(e){
-			e.stopPropagation();
-			if(keyDown){
-				var x = e.clientX;//鼠标横坐标var x
-				var lineDiv_left = getPosition(lineDiv).left;//长线条的横坐标
-				var minDiv_left = (x - lineDiv_left) - xTemp;//小方块相对于父元素（长线条）的left值vaminDiv_left
-				if(minDiv_left > (lineDiv.offsetWidth - minDiv.offsetWidth)){
-					minDiv_left = lineDiv.offsetWidth - minDiv.offsetWidth;
-				}
-				if(minDiv_left < 0){
-					minDiv_left = 0;
-				}
-				//设置拖动后小方块的left值
-				minDiv.style.left = minDiv_left + "px";
-			}
-		};
-		minDiv.onmousedown = function(e){
-			e.stopPropagation();
-			keyDown = true;
-			xTemp = e.clientX - getPosition(minDiv).left;
-		};
-		//minDiv.onmouseleave = function(){
-		//	keyDown = false;
-		//};
-		window.onmouseup = function(){
-			keyDown = false;
-		};
-		//获取元素的绝对位置
-		function getPosition(node){
-			var left = node.offsetLeft;//获取元素相对于其父元素的left值var left
-			var top = node.offsetTop;
-			current = node.offsetParent; // 取得元素的offsetParent
-			　// 一直循环直到根元素
-		　　while (current != null) {
-			　　left += current.offsetLeft;
-			　　top += current.offsetTop;
-			　　current = current.offsetParent;
-		　　}
-			return {"left":left,"top":top};
-		}
-
+	<script type="text/javascript" src="js/mousemove.js">
 	</script>
 	</body>
 </html>
