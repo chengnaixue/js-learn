@@ -1,0 +1,50 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#demo {
+	display: block;
+	margin: 50px;
+	position: relative;
+	width: 800px;
+	height: 350px;
+}
+
+#small-box {
+	position: absolute;
+	z-index: 1;
+	border: 1px solid #ccc;
+	width: 350px;
+	height: 350px;
+}
+
+#float-box {
+	display: none;
+	width: 175px;
+	height: 175px;
+	position: absolute;
+	background: #ffffcc;
+	border: 1px solid #ccc;
+	filter: alpha(opacity=50);
+	opacity: 0.5;
+	cursor: move;
+}
+
+#big-box {
+	display: none;
+	position: absolute;
+	top: 0px;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	z-index: 1;
+	left: 400px;
+	width: 400px;
+	height: 400px;
+}
+
+#big-box img {
+	position: absolute;
+	z-index: 5;
+}
+

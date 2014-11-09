@@ -3,58 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>图片放大镜效果</title>
-		<style type="text/css">
-			* {
-				margin: 0px;
-				padding: 0px;
-			}
-
-			#demo {
-				display: block;
-				margin: 50px;
-				position: relative;
-				width: 800px;
-				height: 350px;
-			}
-
-			#small-box {
-				position: absolute;
-				z-index: 1;
-				border: 1px solid #ccc;
-				width: 350px;
-				height: 350px;
-			}
-
-			#float-box {
-				display: none;
-				width: 175px;
-				height: 175px;
-				position: absolute;
-				background: #ffffcc;
-				border: 1px solid #ccc;
-				filter: alpha(opacity=50);
-				opacity: 0.5;
-				cursor: move;
-			}
-
-			#big-box {
-				display: none;
-				position: absolute;
-				top: 0px;
-				overflow: hidden;
-				border: 1px solid #ccc;
-				z-index: 1;
-				left: 400px;
-				width: 400px;
-				height: 400px;
-			}
-
-			#big-box img {
-				position: absolute;
-				z-index: 5;
-			}
-
-		</style>
+		<link rel="stylesheet" type="text/css" href="../css/glassshow.css">
 	</head>
 	<body>
 		<div id="demo">
@@ -66,53 +15,7 @@
 				<img src="../img/macbook-big.jpg"/>
 			</div>
 		</div>
-		<script type="text/javascript">
-			window.onload = function () {
-				var objDemo = document.getElementById('demo');
-				var objSmallBox = document.getElementById('small-box');
-				var objFloatBox = document.getElementById('float-box');
-				var objBigBox = document.getElementById('big-box');
-				var objBigBoxImg = objBigBox.getElementsByTagName('img')[0];
-
-				objSmallBox.onmouseover = function () {
-					objFloatBox.style.display = 'block';
-					objBigBox.style.display = 'block';
-				};
-
-				objSmallBox.onmouseout = function () {
-					objFloatBox.style.display = 'none';
-					objBigBox.style.display = 'none';
-				};
-
-				objSmallBox.onmousemove = function (event) {
-					event = event || window.event;
-					var left = event.clientX - objDemo.offsetLeft - objSmallBox.offsetLeft - objFloatBox.offsetWidth/2;
-					var top = event.clientY - objDemo.offsetTop - objSmallBox.offsetTop - objFloatBox.offsetHeight/2; 
-
-					if (left < 0) {
-						left = 0;
-					} else if (left > (objSmallBox.offsetWidth - objFloatBox.offsetWidth)) {
-						left = objSmallBox.offsetWidth - objFloatBox.offsetWidth;
-					}
-
-					if (top < 0) {
-						top = 0;
-					} else if (top > (objSmallBox.offsetHeight - objFloatBox.offsetHeight)) {
-						top = objSmallBox.offsetHeight - objFloatBox.offsetHeight;
-					}
-
-					objFloatBox.style.left = left + 'px';
-					objFloatBox.style.top = top + 'px';
-
-					var percentX = left / (objSmallBox.offsetWidth - objFloatBox.offsetWidth);
-					var percentY = top / (objSmallBox.offsetHeight - objFloatBox.offsetHeight);
-
-					objBigBoxImg.style.left = -percentX * (objBigBoxImg.offsetWidth - objBigBox.offsetWidth) + 'px';
-					objBigBoxImg.style.top = -percentY * (objBigBoxImg.offsetHeight - objBigBox.offsetHeight) + 'px';
-
-				};
-
-			};
+		<script type="text/javascript" src="../js/glassshow.js">
 		</script>
 	</body>
 </html>
