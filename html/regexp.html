@@ -15,12 +15,36 @@
 	</head>
 	<body>
 		<div id="demo">
-			<span>UserName : </span><input type="text" id="username"/><br/>
+			<span>UserName : </span><input type="text" id="username"/>
+			<p id="name_message" style="display:none;"></p>
+			<br/>
 			<span>PassWord : </span><input type="password" id="pwd"/>
 		</div>
 		<script type="text/javascript">
 			window.onload = function () {
+				var oname = document.getElementById("username");
+				var name_message = document.getElementById("name_message");
 
+				//1.数字、字母（大小写）、汉字、下划线
+				//\u4e00-\u9fa4 汉字
+				var re = /[^\w\u4e00-\u9fa5]/g;
+
+				oname.onfocus = function () {
+					name_message.style.display = "block";
+					name_message.innerHTML = "5-25个字符";
+				};
+
+				oname.onkeyup = function () {
+					var str = oname.value;
+					var length = getLength(str);
+					name_message.style.display = "block";
+					name_message.innerHTML = length + "";
+				};
+
+				//\x00-\xff 在ASCII 0-255 占一个字节,其余是双字节 
+				function getLength(str) {
+					return str.replace(/[^\x00-\xff]/g,"xx").length;
+				}
 			};
 		</script>		
 	</body>
