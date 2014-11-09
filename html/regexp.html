@@ -26,6 +26,7 @@
 				var name_message = document.getElementById("name_message");
 
 				//1.数字、字母（大小写）、汉字、下划线
+				// \w 匹配数字、字母、下划线 等价于 [A-Za-z0-9_]
 				//\u4e00-\u9fa5 汉字
 				var re = /[^\w\u4e00-\u9fa5]/g;
 
@@ -39,6 +40,14 @@
 					var length = getLength(str);
 					name_message.style.display = "block";
 					name_message.innerHTML = length + "";
+				};
+
+				oname.onblur = function () {
+					var re = /[^\w\u4e00-\u9fa5]/g;
+					if (re.test(this.value)) {
+						name_message.style.display = "block";
+						name_message.innerHTML = "含有非法字符！";
+					}
 				};
 
 				//\x00-\xff 在ASCII 0-255 占一个字节,其余是双字节 
