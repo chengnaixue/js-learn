@@ -3,8 +3,43 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>新手指引</title>
+		<style type="text/css">
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+
+			html {
+				height: 100%;
+			}
+
+			body {
+				background: url(../img/macbook-big.jpg) center top no-repeat;
+				height: 100%;
+			}
+
+			#mask {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				background: #000;
+				opacity: 0.5; /*firefox chrome and so on*/
+				filter: alpha(opacity=50);
+				display: none;
+			}
+
+		</style>
 	</head>
 	<body>
-		
+		<div id="mask"></div>
+		<div id="searchTip">
+			<div class="StepA"><a>下一步</a><span title="关闭">关闭</span></div>
+			<div class="StepB"><a>下一步</a><span title="关闭">关闭</span></div>
+			<div class="StepB"><a>下一步</a><span title="关闭">关闭</span></div>
+			<div class="StepD"><a>下一步</a><span title="关闭">关闭</span></div>
+			<div class="StepE"><a>下一步</a><span title="关闭">关闭</span></div>
+		</div>
 	</body>
 </html>
