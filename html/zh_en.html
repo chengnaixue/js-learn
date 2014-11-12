@@ -4,10 +4,13 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>中英文切换菜单</title>
 		<style type="text/css">
+
 			.top-nav{
 				font-size: 12px;
 				font-weight: bold;
 				list-style: none;
+				border-bottom: 8px solid #dc4e1b;
+				overflow: auto; /*清除浮动、包裹*/
 			}
 
 			.top-nav li {
@@ -24,7 +27,21 @@
 				width: 80px;
 				text-align: center;
 			}
-			
+
+			.top-nav li a span {
+				display: none;
+			}
+
+			.top-nav li a:hover span {
+				display: block;
+				background: #dc4e1b;
+				color: white;
+			}
+
+			.top-nav li a:hover {
+				margin-top: -20px;
+			}
+
 		</style>
 	</head>
 	<body>
