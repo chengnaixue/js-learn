@@ -4,5 +4,42 @@
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<title>固定边栏滚动效果</title>
 	</head>
-	<body></body>
+	<body>
+		<div>
+			<div id="J_BdMain">....</div>
+			<div id="J_BdSide">....</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				var jWindow = $(window);
+				jWindow.scroll(function () {
+					var scrollHeight = jWindow.scrollTop();
+					var screenHeight = jWindow.height();
+					var sideHeight = $('#J_BdSide').height();
+
+					if (scrollHeight + screenHeight > sideHeight) {
+						$('#J_BdSide').css({
+							'position': 'fixed',
+							'top': -(sideHeight - screenHeight),
+							'right': 0
+						});
+					} else {
+						$('J_BdSide').css({
+							'position': 'stative'   /*position的默认值*/
+						});
+					}
+				});
+
+				window.onload = function () {
+					jWindow.trigger('scrool');
+				};
+
+				jWindow.resize = function () {
+					jWindow.trigger('scrool');
+				};
+
+			});
+		</script>
+	</body>
 </html>
