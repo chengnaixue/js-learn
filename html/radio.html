@@ -3,8 +3,85 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>表单美化－单选按钮</title>
+		<link rel="stylesheet" type="text/css" href="../css/public.css">
+		<style type="text/css">
+			
+			body {
+				font: 12px/22px "微软雅黑";
+			}
+
+			a {
+				color: #000;
+				text-decoration: none;
+			}
+
+			.type {
+				width: 400px;
+				height: 32px;
+				border: 1px solid #dfdfdf;
+				margin: 30px auto;
+			}
+
+			.type dl {
+				height: 32px;
+				line-height: 32px;
+				padding-left: 15px;
+			}
+
+			.type dt {
+				float: left;
+			}
+
+			.type dd {
+				float: left;
+				margin: 0 10px 0 8px;
+			}
+
+			.type dd a:hover {
+				color: #c00;
+				text-decoration: underline;
+			}
+
+			.type dd b {
+				width: 20px;
+				height: 20px;
+				display: block;
+				background: url(../img/radiobutton.gif) -14px -18px no-repeat;  /*positon  先水平、再垂直 */
+				position: absolute;
+				top: 6px;
+				left: 0px;
+			}
+
+			.type dd a {
+				display: block;
+				position: relative;
+				padding-left: 23px; /*填充*/
+			}
+
+			.type dd a:hover b {
+				background-position: -14px -118px;
+			}
+
+			.type .selected b, .type .selected a:hover b {
+				background-position: -14px -218px;
+			}
+
+		</style>
 	</head>
 	<body>
-		
+		<div class="type">
+			<!--<form action="#" method="post" name="typeForm">
+				<label>配送类型：</label>
+				<input type="radio" name="type" checked="true"/><label>全部</label>
+				<input type="radio" name="type"/><label>京东配送</label>
+				<input type="radio" name="type"/><label>第三方配送</label>
+			</form>-->
+			<dl>
+				<dt>配送类型：</dt>
+				<dd class="selected"><a href="#"><b></b>全部</a></dd>
+				<dd><a href="#"><b></b>京东配送</a></dd>
+				<dd><a href="#"><b></b>第三方配送</a></dd>
+			</dl>
+		</div>
 	</body>
 </html>
