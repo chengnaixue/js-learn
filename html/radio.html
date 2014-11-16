@@ -76,12 +76,26 @@
 				<input type="radio" name="type"/><label>京东配送</label>
 				<input type="radio" name="type"/><label>第三方配送</label>
 			</form>-->
-			<dl>
+			<dl id="type">
 				<dt>配送类型：</dt>
-				<dd class="selected"><a href="#"><b></b>全部</a></dd>
-				<dd><a href="#"><b></b>京东配送</a></dd>
-				<dd><a href="#"><b></b>第三方配送</a></dd>
+				<dd class="selected" onclick="show(0)"><a href="#"><b></b>全部</a></dd>
+				<dd onclick="show(1)"><a href="#"><b></b>京东配送</a></dd>
+				<dd onclick="show(2)"><a href="#"><b></b>第三方配送</a></dd>
 			</dl>
 		</div>
+		<script type="text/javascript">
+
+			function show(index) {
+				var dl = document.getElementById('type');
+				var ddArray = dl.getElementsByTagName('dd');
+				for (var i=0; i<ddArray.length; i++){
+					ddArray[i].className = "";
+					if(index==i){
+						ddArray[index].className = "selected";
+					}
+				}
+			}
+
+		</script>
 	</body>
 </html>
