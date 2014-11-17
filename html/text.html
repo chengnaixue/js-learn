@@ -4,8 +4,71 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>表单美化－文本框</title>
 		<link rel="stylesheet" type="text/css" href="../css/public.css">
+		<style type="text/css">
+			
+			body {
+				font: 14px/28px "微软雅黑";
+			}
+
+			.contact *:focus {
+				outline: none; /* 去除默认的外边框 */
+			}
+
+			.contact {
+				width: 700px;
+				height: auto;
+				background: #f6f6f6;
+				margin: 40px auto;
+				padding: 10px;
+			}
+
+			.contact ul {
+				width: 700px;
+			}
+
+			.contact ul li {
+				border-bottom: 1px solid #dfdfdf;
+				padding: 12px;
+			}
+
+			.contact ul li label {
+				width: 120px;
+				display: inline-block;
+				float: left;
+			}
+
+			.contact ul li input[type="text"] {
+				width: 220px;
+				height: 20px;
+				border: 1px solid #aaa;
+				padding: 3px 8px;
+				background: url(../img/red_asterisk.png) no-repeat 98% #fff;
+				border-radius: 5px; /* CSS3实现圆角 */
+				transition: padding: .25s;
+				-o-transition: padding: .25s;
+				-webkit-transition: padding: .25s;
+				-moz-transition: padding: .25s;
+			}
+
+			.contact ul li input:focus {
+				border-color: #c00;
+				background-image: url(../img/invalid.png);
+				padding-right: 70px;
+			}
+
+		</style>
 	</head>
 	<body>
-		
+		<div class="contact">
+			<form action="#" method="post" name="cForm">
+				<ul>
+					<li>
+						<label>姓名：</label>
+						<input type="text" name="yourname" placeholder="SunBest" required/>
+						<!-- placeholder,required, HTML5属性 -->
+					</li>
+				</ul>
+			</form>
+		</div>
 	</body>
 </html>
