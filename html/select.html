@@ -4,8 +4,108 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>表单美化－下拉列表</title>
 		<link rel="stylesheet" type="text/css" href="../css/public.css">
+		<style type="text/css">
+
+			body {
+				font: 16px/32px "微软雅黑";
+				background: #333;
+			}
+
+			#box {
+				width: 500px;
+				height: 326px;
+				border: 3px solid #000;
+				background: #fff;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -250px;
+				margin-top: -163px;
+			}
+
+			.province {
+				width: 320px;
+				height: 42px;
+				background: #c00;
+				margin: 80px auto;
+				position: relative;
+			}
+
+			.province strong {
+				width: 64px; /* 行内元素定义宽度无效，故调整display */
+				height: 42px;
+				line-height: 42px;
+				display: block;
+				float: left;
+				color: #fff;
+				padding-left: 10px;
+			}
+
+			#selectProvince {
+				width: 200px;
+				height: 28px;
+				display: block;	
+				float: left;
+				background: #fff url(../img/province_sprites.png) no-repeat 190px 1px;
+				margin-top: 7px;
+				padding-left: 8px;
+				color: #ccc;
+				cursor: pointer;
+			}
+
+			#allProvince {
+				width: 318px;
+				height: auto;
+				line-height: 30px;
+				clear: both;
+				position: absolute;
+				top: 42px;
+				left: 0px;
+				background: #fff;
+				border: 1px solid #dfdfdf;
+				border-top: none;
+				display: none;
+			}
+
+			#allProvince li {
+				height: 30px;
+				border-bottom: 1px solid #dfdfdf;
+			}
+
+			#allProvince li b {
+				font-weight: bold;
+				display: inline-block;
+				width: 40px;
+				text-align: center;
+			}
+
+			#allProvince li span {
+				padding-right: 15px;
+				cursor: pointer;
+			}
+
+			#allProvince li span:hover {
+				color: #c00;
+			}
+
+		</style>
 	</head>
 	<body>
-		
+		<div id="box">
+			<div class="province">
+				<strong>送货至:</strong>
+				<span id="selectProvince">北京</span>
+				<ul id="allProvince">
+					<li><b>G</b><span>广东</span><span>广西</span></li>
+					<li><b>H</b><span>河南</span><span>河北</span><span>黑龙江</span></li>
+					<li><b>J</b><span>吉林</span></li>
+					<li><b>N</b><span>内蒙古</span></li>
+					<li><b>Q</b><span>青海</span></li>
+					<li><b>L</b><span>辽宁</span></li>
+					<li><b>S</b><span>上海</span><span>山东</span></li>
+					<li><b>T</b><span>天津</span></li>
+				</ul>
+			</div>
+		</div>
 	</body>
 </html>
