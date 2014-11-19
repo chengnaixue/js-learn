@@ -4,6 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>表单美化－下拉列表</title>
 		<link rel="stylesheet" type="text/css" href="../css/public.css">
+		<script type="text/javascript" src="../js/addLoadEvent.js"></script>
 		<style type="text/css">
 
 			body {
@@ -65,6 +66,7 @@
 				border: 1px solid #dfdfdf;
 				border-top: none;
 				display: none;
+				z-index: 101;
 			}
 
 			#allProvince li {
@@ -88,6 +90,19 @@
 				color: #c00;
 			}
 
+			#layer {
+				width: 100%;
+				height: 100%;
+				background: #fff;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				z-index: 100;
+				filter: alpha(opacity=0);
+				opacity: 0;
+				display: none;
+			}
+
 		</style>
 	</head>
 	<body>
@@ -96,6 +111,10 @@
 				<strong>送货至:</strong>
 				<span id="selectProvince">北京</span>
 				<ul id="allProvince">
+					<li><b>A</b><span>安徽</span></li>
+					<li><b>B</b><span>北京</span></li>
+					<li><b>C</b><span>重庆</span></li>
+					<li><b>F</b><span>福建</span></li>
 					<li><b>G</b><span>广东</span><span>广西</span></li>
 					<li><b>H</b><span>河南</span><span>河北</span><span>黑龙江</span></li>
 					<li><b>J</b><span>吉林</span></li>
@@ -107,7 +126,54 @@
 				</ul>
 			</div>
 		</div>
+		<div id="layer"></div>
 		<script type="text/javascript">
+			function getDom(id) {
+				return document.getElementById(id);
+			}
+
+			function showProvince() {
+				getDom('selectProvince').onclick = function () {
+					showAllProvince();
+				};
+			}
+
+			function showAllProvince() {
+				getDom('allProvince').style.display = 'block';
+				getDom('layer').style.display = 'block';
+				getDom('selectProvince').style.backgroundPosition = '190px -17px';
+				getDom('selectProvince').style.color = '#ccc';
+			}
+
+			function hideAllProvince() {
+				getDom('allProvince').style.display = 'none';
+				getDom('layer').style.display = 'none';
+				getDom('selectProvince').style.backgroundPosition = '190px 1px';
+				getDom('selectProvince').style.color = '#000';
+			}
+
+			function selectProvince(){
+				var pro = getDom('allProvince').getElementsByTagName('li');
+				var links;
+				for(var i=0; i<pro.length; i++) {
+					links = pro[i].getElementsByTagName('span');
+					for(var j=0; j<links.length; j++) {
+						links[j].onclick = function () {
+							getDom('selectProvince').innerHTML = this.innerHTML;
+							hideAllProvince();
+						}
+					}
+				}
+			}
+
+			
+			getDom('layer').onclick = function () {
+				getDom('allProvince').style.display = 'none';
+				hideAllProvince();
+			};
+
+			addLoadEvent(showProvince);
+			addLoadEvent(selectProvince);
 
 		</script>
 	</body>
