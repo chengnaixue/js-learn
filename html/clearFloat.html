@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>清除浮动的几种方式</title>
+		<style type="text/css">
+			#div1 {
+				background: black;
+				width: 980px;
+				margin: 0 auto;
+				position: relative;
+			}
+
+			#div2 {
+				background: yellow;
+				width: 80%;
+				height: 300px;
+				float: left;
+			}
+
+			#div3 {
+				background: #ccc;
+				width: 980px;
+				margin: 0 auto;
+				position: relative;
+			}
+
+			#div3:after {
+				content: ".";
+				height: 0;
+				visibility: hidden;
+				display: block;
+				clear: both;
+			}
+
+			#div4 {
+				background: red;
+				width: 80%;
+				height: 200px;
+				float: left;
+			}
+
+			#div5 {
+				background: green;
+				width: 980px;
+				/* height: 300px; */
+				margin: 0 auto;
+				position: relative;
+				overflow: hidden;
+			}
+
+			#div6 {
+				background: #abf;
+				width: 75%;
+				height: 300px;
+				float: left;
+			}
+
+			#fixbox {
+				position: fixed;
+				background: green;
+				width: 50px;
+				height: 50px;
+				left: 50px;
+				top: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 额外标签法 -->
+		<div id="div1">
+			<div id="div2"></div>
+			<div style="clear:both;"></div>
+		</div>
+		<!-- 使用after伪类 -->
+		<div id="div3">
+			<div id="div4"></div>
+		</div>
+		<!-- 设置overflow为hidden或者auto -->
+		<div id="div5">
+			<div id="div6"></div>
+		</div>
+		<div id="fixbox"></div>
+	</body>
+</html>
