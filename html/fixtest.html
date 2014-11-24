@@ -4,12 +4,25 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>fix test</title>
 		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
 			#wrap {
 				position: relative;
 				background: green;
 				width: 980px;
 				height: 500px;
 				margin: 0 auto;
+				/* overflow: hidden; */
+			}
+
+			#mainbody {
+				background: black;
+				height: 200px;
+				width: 200px;
+				padding: 20px;
 			}
 
 			#div1 {
@@ -17,7 +30,13 @@
 				width: 100px;
 				height: 100px;
 				position: fixed;
-				top: 100px; /* 未设置left，仍然紧贴着父元素 */
+			}
+
+			#wrap1:before{
+				content: ".";
+				display: block;
+				height: 0;
+				visibility: hidden;
 			}
 		</style>
 	</head>
