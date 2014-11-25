@@ -3,8 +3,49 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>radius</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			#wrap {
+				background: green;
+				width: 980px;
+				height: 300px;
+				position: relative;
+				margin: 0 auto;
+				border: 1px solid #ccc;
+				padding: 10px;
+			}
+
+			#div1 {
+				position: absolute; /* 设置了左右边距,以内边距外边界定位 */
+				width: 50px;
+				height: 50px;
+				background: rgb(186, 20, 165);
+				top: 0;
+				left: 0;
+				z-index: 2;
+				text-align: center;
+				line-height: 50px;
+			}
+
+			#div2 {
+				position: absolute; /* 不设置左右边距,以内边距内边界定位 */
+				width: 80px;
+				height: 80px;
+				background: yellow;
+				z-index: 1;
+				text-align: center;
+				line-height: 80px;
+			}
+		</style>
 	</head>
 	<body>
-		
+		<div id="wrap">
+			<div id="div1">div1</div>
+			<div id="div2">div2</div>
+		</div>
 	</body>
 </html>
