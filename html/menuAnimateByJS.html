@@ -73,31 +73,34 @@
 						//u.style.display = 'block';
 						if (u != undefined) {
 							SubH(u.id);
-						}
-						
+						}						
 					};
 				}
 			};
 
+			var at, st;
+
 			function AddH (id) {
+				clearTimeout(st);
 				var ul = document.getElementById(id);
 				var h = ul.offsetHeight;
 				h++;
 				if (h <= 34) {
 					ul.style.height = h + 'px';
-					setTimeout('AddH("' + id + '")', 10);
+					at = setTimeout('AddH("' + id + '")', 10);
 				} else {
 					return;
 				}
 			}
 
 			function SubH (id) {
+				clearTimeout(at);
 				var ul = document.getElementById(id);
 				var h = ul.offsetHeight;
 				h--;
 				if (h >= 0) {
 					ul.style.height = h + 'px';
-					setTimeout('SubH("' + id + '")', 10);
+					st = setTimeout('SubH("' + id + '")', 10);
 				} else {
 					ul.style.display = 'none';
 					return;
