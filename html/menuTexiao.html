@@ -24,10 +24,10 @@
 				position: relative;
 				top: 30px;
 				width: 100%;
-				/*
+				
 				height: 0;
 				overflow: hidden;
-				*/
+				
 			}
 
 			.expdiv {
@@ -55,6 +55,39 @@
 			}
 
 		</style>
+		<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#menuList").on('click', 'a', function(event) {
+					//event.preventDefault();
+					/* Act on the event */
+					var curIndex = $(this).index();
+					var mlValue = "-" + 100 * curIndex + "%";
+					//alert(curIndex);
+					if($(this).hasClass('active-a')){
+						$("#expandZone #closeBtn").click();
+						return false;
+					} else {
+						$(this).addClass('active-a').siblings('a').removeClass('active-a');
+					}
+
+					if($("#expandZone").hasClass('active')){
+						$("#expandZone .expdiv").animate({ marginLeft: mlValue });
+					} else {
+						$("#expandZone .expdiv").css({ marginLeft: mlValue });
+						$("#expandZone").animate({ height: "130px" }).addClass('active');
+					}
+
+					return false;
+				});
+
+				$("#expandZone #closeBtn").on('click', function(){
+					$("#expandZone").animate({ height: "0px" }).removeClass('active');
+					$("#menuList a").removeClass('active-a');
+					return false;
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<!-- 一级菜单 -->
