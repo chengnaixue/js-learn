@@ -91,6 +91,44 @@ function MyObject(){
 
 })();
 
+/**
+	5.模块模式：为单例创建私有变量和特权方法
+*/
+var singleton = function(){
+
+	//私有变量和私有函数
+	var privateVariable = 10;
+
+	function privateFunction(){
+		return false;
+	}
+
+	//特权/公有方法和属性
+	return {
+		publicProperty: true,
+
+		publicMethod: function(){
+			privateVariable++;
+			return privateFunction();
+		},
+
+		publicMethod2: function(){
+			return privateVariable;
+		}
+	};
+
+}();
+
+
+
+
+
+
+
+
+
+
+
 
 
 
