@@ -119,18 +119,33 @@ var singleton = function(){
 
 }();
 
+/**
+	6.增强的模块模式：适合单例必须是某种类型的实例
+*/
+var singleton = function(){
 
+	//私有变量和私有函数
+	var privateVariable = 10;
 
+	function privateFunction(){
+		return false;
+	}
 
+	//创建对象
+	var object = new Object();
 
+	//添加特权/公有属性和方法
+	object.publicProperty = true;
 
+	object.publicMethod = function(){
+		privateVariable++;
+		return privateFunction();
+	};
 
+	object.publicMethod2 = function(){
+		return privateVariable;
+	};
 
-
-
-
-
-
-
-
-
+	//返回这个对象
+	return object;
+}();
