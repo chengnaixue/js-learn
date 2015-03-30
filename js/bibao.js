@@ -63,9 +63,36 @@ function MyObject(){
 
 }
 
+/**
+	4.静态私有变量
+*/
 (function(){
-	//var j = 5;
-	//alert(j);
+
+	//私有变量和私有函数
+	var privateVariable = 10;
+
+	function privateFunction(){
+		return false;
+	}
+
+	//构造函数
+	MyObject = function(){
+	};
+
+	//公有/特权方法
+	MyObject.prototype.publicMethod = function(){
+		privateVariable++;
+		return privateFunction();
+	};
+
+	MyObject.prototype.publicMethod2 = function(){
+		return privateVariable;
+	}
 
 })();
+
+
+
+
+
 
