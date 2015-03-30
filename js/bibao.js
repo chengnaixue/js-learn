@@ -40,8 +40,29 @@ function outputNumber(count){
 }
 
 /**
-	3.
+	3.私有变量
 */
+function MyObject(){
+
+	//私有变量和私有函数
+	var privateVariable = 10;
+
+	function privateFunction(){
+		return false;
+	}
+
+	//特权函数：有权访问私有变量和私有函数的公有方法
+	this.publicMethod = function(){
+		privateVariable++;
+		return privateFunction();
+	};
+
+	this.publicMethod2 = function(){
+		return privateVariable;
+	};
+
+}
+
 (function(){
 	//var j = 5;
 	//alert(j);
