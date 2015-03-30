@@ -28,11 +28,23 @@ function createFunctions2(){
 }
 
 /**
-	2.
+	2.模仿块级作用域
+*/
+function outputNumber(count){
+	(function(){
+		for(var i=0; i<count; i++){
+			alert(i);
+		}
+	})();
+	//alert(i);
+}
+
+/**
+	3.
 */
 (function(){
-	var j = 5;
-	alert(j);
+	//var j = 5;
+	//alert(j);
 
 })();
 
